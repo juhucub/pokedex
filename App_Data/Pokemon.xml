@@ -1,0 +1,83 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Pokedex>
+  <Pokemon>
+    <Id>1</Id>
+    <Name>Bulbasaur</Name>
+    <Type>Grass/Poison</Type>
+    <Level>5</Level>
+    <Description>Seed Pokemon</Description>
+  </Pokemon>
+  <Pokemon>
+    <Id>2</Id>
+    <Name>Charizard</Name>
+    <Type>Fire</Type>
+    <Level>2</Level>
+    <Description>My favorite</Description>
+  </Pokemon>
+  <Pokemon>
+    <Id>3</Id>
+    <Name>Alakazan</Name>
+    <Type>Psychic</Type>
+    <Level>42</Level>
+    <Description>Evolves from Kadabra. 
+Damage Swamp. Type Pokemon Power</Description>
+  </Pokemon>
+  <Pokemon>
+    <Id>4</Id>
+    <Name>Charizard</Name>
+    <Type>Fire</Type>
+    <Level>76</Level>
+    <Description>hp: 120
+Evolves from Charmeleon.
+Energy Burn. Pokemon Power
+Fire Spin. Cost 4 Fire. 100 Damage</Description>
+  </Pokemon>
+  <Pokemon>
+    <Id>5</Id>
+    <Name>Gyrados</Name>
+    <Type>Water</Type>
+    <Level>41</Level>
+    <Description>hp: 100
+Evolves from Magikarp &lt;3.
+Dragon Rage. Cost 4 Water. 50 damage. 
+Weakness: Grass (Value 2x)
+Resistance: Fighting (Value -30)</Description>
+  </Pokemon>
+  <Pokemon>
+	<Id>6</Id>
+	<Name>Clefairy</Name>
+	<Type>Colorless</Type>
+	<Level>14</Level>
+	<Description>hp: 40
+Evolves to Clefable.
+Attack: Sing. Cost 1 Colorless. Puts the Defending Pokémon to Sleep on heads.
+Attack: Metronome. Cost 3 Colorless. Copies one of the Defending Pokémon&apos;s attacks.
+Weakness: Fighting (×2)
+Resistance: Psychic (-30)</Description>
+	</Pokemon>
+	<Pokemon>
+	  <Id>7</Id>
+	  <Name>Gyarados</Name>
+	  <Type>Water</Type>
+	  <Level>41</Level>
+	  <Description>
+hp: 100
+Evolves from Magikarp &lt;3.
+Attack: Dragon Rage. Cost 3 Water. 50 damage.
+Attack: Bubblebeam. Cost 4 Water. 40 damage and Paralyze on heads.
+Weakness: Grass (×2)
+Resistance: Fighting (-30)</Description>
+	</Pokemon>
+	<Pokemon>
+		<Id>8</Id>
+		<Name>Hitmonchan</Name>
+		<Type>Fighting</Type>
+		<Level>33</Level>
+		<Description>
+			hp: 70
+			Attack: Jab. Cost 1 Fighting. 20 damage.
+			Attack: Special Punch. Cost 2 Fighting and 1 Colorless. 40 damage.
+			Weakness: Psychic (×2)
+		</Description>
+	</Pokemon>
+</Pokedex>
