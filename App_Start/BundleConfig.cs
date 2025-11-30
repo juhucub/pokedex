@@ -5,7 +5,7 @@ using System.Web;
 using System.Web.Optimization;
 using System.Web.UI;
 
-namespace pokedex
+namespace WebApplication1
 {
     public class BundleConfig
     {

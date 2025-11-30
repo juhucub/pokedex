@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace pokedex {
+namespace WebApplication1 {
     
     
     public partial class Site_Mobile {

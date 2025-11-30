@@ -1,141 +1,62 @@
-﻿<%@ Page Title="Home Page" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Default.aspx.cs" Inherits="pokedex._Default" %>
+﻿<%@ Page Title="Home Page" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Default.aspx.cs" Inherits="WebApplication1._Default" %>
+<%@ Register Src="~/CardCounter.ascx" TagPrefix="uc" TagName="CardCounter" %>
 
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
 
-    <div>
-            <h1>Pokedex Web Application (Jacob Gardner- 50% Justin Guerrero - 50%)</h1>
-            <p>
-                This app lets users add Pokemon cards into an XML-based Pokedex
-                and also demonstrates hashing, cookies, and session cookies state.
-            </p>
+    <main>
+        <section class="row" aria-labelledby="aspnetTitle">
+            <h1 id="aspnetTitle">Pokemon Card Collection Tracker</h1>
+            <p class="lead">Track/Manage your Pokemon card collection! You may search for cards using the Pokemon's names, levels, or types.</p>
+        </section>
 
-            <h2>TryIt: Hashing Function (DLL)</h2>
-            <asp:TextBox ID="txtHashInput" runat="server" Width="300" />
-            <asp:Button ID="btnHash" runat="server" Text="Hash String" OnClick="btnHash_Click" />
-            <br />
-            <asp:Label ID="lblHashResult" runat="server" />
+        <div class="row">
+            <section class="col-md-12" aria-labelledby="librariesTitle">
+                
+            <section class="col-md-12" aria-labelledby="gettingStartedTitle">
+                <h2><b>Service Directory</b></h2>
 
-            <hr />
+                <h3> <b>CardFilter Service: </b></h3>
+                <asp:Label ID="serviceLabel1" runat="server" Text="<b>Provider:</b> Justin Guerrero<br />
+                    <b>Component Type:</b> RESTful Service<br />
+                    <b>Description: </b> A filter search that return a list of cards based off an input of name, level, or type. <br />
+                    <b>Resources: </b> Reworked my WordFilter service from Assignment3 to filter cards from an XML file/database. Used for better organization/search<br />"></asp:Label>
+                    <asp:Label ID="serviceInputLabels" runat="server" Text="<b>How To: </b> Input either a card's name, type, and/or level (input boxes in that respective order) to filter through collecion. Please look in ~/App_Data/Pokedex.xml for example cards."></asp:Label> <br />
+                    <b>TryIt: </b> 
+                <asp:TextBox ID="nameInputTxt" runat="server" Width="168px" Height="51px"></asp:TextBox>  
+                <asp:TextBox ID="typeInputTxt" runat="server" Width="168px" Height="51px"></asp:TextBox>
+                <asp:TextBox ID="lvlInputTxt" runat="server" Width="168px" Height="51px"></asp:TextBox>
+                <asp:Button ID="filterButton" runat="server" Height="48px" Text="Filter!" Width="146px" BackColor="White" BorderColor="White" OnClick="filterButton_Click" />
+                <br />
+                <asp:Label ID="resultLabel" runat="server" Text=" "></asp:Label>
 
-            <h2>Add Pokemon Card</h2>
-            Name: <asp:TextBox ID="txtName" runat="server" /><br />
-            Type: <asp:TextBox ID="txtType" runat="server" /><br />
-            Level: <asp:TextBox ID="txtLevel" runat="server" /><br />
-            Description: <asp:TextBox ID="txtDesc" runat="server" TextMode="MultiLine" Rows="3" Columns="40" /><br />
-            <asp:Button ID="btnAddPokemon" runat="server" Text="Add Pokemon" OnClick="btnAddPokemon_Click" />
-            <br /><br />
-            <asp:GridView ID="gvPokemon" runat="server" AutoGenerateColumns="true" />
+                    
+            
+            </section>
+                <h3><b>Global.asax w/ Event Handler:</b></h3>
+                <asp:Label ID="service2Label" runat="server" Text="<b>Provider: </b> Justin Guerrero <br />
+                    <b>Component Type: </b> Global.asax w/ event handler <br />
+                    <b>Description: </b> A global.asax file that has an event handler for counting the number of site visits <br />
+                    <b>Resources: </b> C# code in the global.asax that handles incrementing a counter for visits
+                    <b>How To: </b> When you first hit 'See visits,' only 1 increment will happen. Open an incognito tab while the app runs + paste URL and the count should increment when you check again."></asp:Label> <br />
+                <asp:Label ID="visitTryItLabel" runat="server" Text="<b>TryIt:</b>"></asp:Label>
+                <asp:Button ID="visitCounterButton" runat="server" Text="See visits" OnClick="visitCounterButton_Click" Height="41px" Width="214px" /> <br />
+                <asp:Label ID="visitCounterLabel" runat="server" Text=" "></asp:Label> <br />
+                <asp:Label ID="appStartLabel" runat="server" Text=" "></asp:Label>
 
-            <hr />
-
-            <h2>User Profile (Cookie & Session)</h2>
-            Preferred Trainer Name:
-            <asp:TextBox ID="txtTrainerName" runat="server" />
-            <asp:Button ID="btnSaveProfile" runat="server" Text="Save Profile" OnClick="btnSaveProfile_Click" />
-            <br />
-            <asp:Label ID="lblProfileInfo" runat="server" />
-
-            <h2>Pokedex Stats (Web Service)</h2>
-            <asp:Button ID="btnTotal" runat="server" Text="Get Total Pokemon"
-                OnClick="btnTotal_Click" />
-            <asp:Label ID="lblTotal" runat="server" /><br /><br />
-            Type filter:
-            <asp:TextBox ID="txtTypeFilter" runat="server" Width="120" />
-            <asp:Button ID="btnCountByType" runat="server" Text="Get Count by Type"
-                OnClick="btnCountByType_Click" />
-            <asp:Label ID="lblCountByType" runat="server" /><br /><br />
-            <asp:Button ID="btnAvgLevel" runat="server" Text="Get Average Level"
-                OnClick="btnAvgLevel_Click" />
-            <asp:Label ID="lblAvgLevel" runat="server" /><br /><br />
-            <asp:Button ID="btnRandomPokemon" runat="server" Text="Get Random Pokemon"
-                OnClick="btnRandomPokemon_Click" />
-            <asp:Label ID="lblRandomPokemon" runat="server" />
-
-        <h2>Application and Components Summary Table</h2>
-
-<table border="1">
-    <tr>
-        <th>Provider name</th>
-        <th>Page / Component type</th>
-        <th>Component description</th>
-        <th>Implementation</th>
-    </tr>
-
-    <tr>
-        <td>Jacob Gardner</td>
-        <td>ASPX page: Default.aspx</td>
-        <td>
-            The public Default Pokedex page.  
-            Hosts TryIts for hashing, Pokemon storage, stats service and profile cookie/session demo
-            No input parameters, it just displays all the other components
-        </td>
-        <td>
-            Web Forms page implemented (Default.aspx and Default.aspx.cs)
-            Calls HashSlinger, PokemonStorage and PokedexService dll methods
-        </td>
-    </tr>
-
-    <tr>
-        <td>Jacob Gardner</td>
-        <td>DLL: PokemonSecurity.HashSlinger</td>
-        <td>
-            Hashing function.  
-            Input: string
-            Output: hashed string 
-        </td>
-        <td>
-            Implemented in PokemonSecurity project (HashSlinger.cs). 
-            Used on Default.aspx wit TryIt controls
-        </td>
-    </tr>
-
-    <tr>
-        <td>Jacob Gardner</td>
-        <td>DLL: PokemonStorage / PokemonCard</td>
-        <td>
-            XML database management for Pokemon cards.  
-            Inputs: Name, Type, Level, Description 
-            Output: writes to App_Data/Pokemon.xml and displays all cards in GridView
-        </td>
-        <td>
-            Implemented in PokemonSecurity project (PokemonStorage.cs, PokemonCard.cs)  
-            Used in Default.aspx 
-            TryIt: add a card and see it appear in the GridView
-        </td>
-    </tr>
-
-    <tr>
-        <td>Jacob Gardner</td>
-        <td>SVC service: PokedexService.svc</td>
-        <td>
-            SVC stats service using Pokemon XML database
-            Methods:  
-            - int GetTotalPokemonCount()
-            - int GetPokemonCountByType(string type)
-            - double GetAveragePokemonLevel() 
-            - string GetRandomPokemonName()
-        </td>
-        <td>
-            Implemented in PokedexService.cs using PokemonStorage 
-            Exposed as WCF service 
-        </td>
-    </tr>
-
-    <tr>
-        <td>Jacob Gardner</td>
-        <td>Cookie / Session state</td>
-        <td>
-            Trainer profile and last-added Pokemon storage
-            Inputs: trainer name  
-            Outputs: 10 min cookie "TrainerProfile" and label that shows trainer + last Pokemon.
-        </td>
-        <td>
-            Implemented in _Default.aspx.cs
-            Uses HttpCookie and Session objects.  
-            TryIt: enter trainer name, click Save Profile, then refresh page.
-        </td>
-    </tr>
-</table>
+            </section>
+            <section class="col-md-12" aria-labelledby="hostingTitle">
+                
+                <h3><b>User Control:</b></h3>
+                <asp:Label ID="serviceLabel3" runat="server" Text="<b>Provider: </b> Justin Guerrero <br />
+                    <b>Component Type: </b> User Control<br />
+                    <b>Description: </b> A way for user's the see how many cards they currently have in their collection <br />
+                    <b>Resources: </b> C# code in CardCounter.ascx. <br />
+                    <b>How To: </b> Press the 'Count!' button and the number of cards should return (3)">
+                </asp:Label> <br />
+                <b>TryIt: </b>
+                <uc:CardCounter ID="cardCounter" runat="server" />
+            </section>
         </div>
+    </main>
 
 </asp:Content>

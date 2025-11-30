@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace pokedex
+namespace WebApplication1
 {
 
 
@@ -15,192 +15,129 @@ namespace pokedex
     {
 
         /// <summary>
-        /// txtHashInput control.
+        /// serviceLabel1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtHashInput;
+        protected global::System.Web.UI.WebControls.Label serviceLabel1;
 
         /// <summary>
-        /// btnHash control.
+        /// serviceInputLabels control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnHash;
+        protected global::System.Web.UI.WebControls.Label serviceInputLabels;
 
         /// <summary>
-        /// lblHashResult control.
+        /// nameInputTxt control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblHashResult;
+        protected global::System.Web.UI.WebControls.TextBox nameInputTxt;
 
         /// <summary>
-        /// txtName control.
+        /// typeInputTxt control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtName;
+        protected global::System.Web.UI.WebControls.TextBox typeInputTxt;
 
         /// <summary>
-        /// txtType control.
+        /// lvlInputTxt control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtType;
+        protected global::System.Web.UI.WebControls.TextBox lvlInputTxt;
 
         /// <summary>
-        /// txtLevel control.
+        /// filterButton control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtLevel;
+        protected global::System.Web.UI.WebControls.Button filterButton;
 
         /// <summary>
-        /// txtDesc control.
+        /// resultLabel control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtDesc;
+        protected global::System.Web.UI.WebControls.Label resultLabel;
 
         /// <summary>
-        /// btnAddPokemon control.
+        /// service2Label control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnAddPokemon;
+        protected global::System.Web.UI.WebControls.Label service2Label;
 
         /// <summary>
-        /// gvPokemon control.
+        /// visitTryItLabel control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView gvPokemon;
+        protected global::System.Web.UI.WebControls.Label visitTryItLabel;
 
         /// <summary>
-        /// txtTrainerName control.
+        /// visitCounterButton control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtTrainerName;
+        protected global::System.Web.UI.WebControls.Button visitCounterButton;
 
         /// <summary>
-        /// btnSaveProfile control.
+        /// visitCounterLabel control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnSaveProfile;
+        protected global::System.Web.UI.WebControls.Label visitCounterLabel;
 
         /// <summary>
-        /// lblProfileInfo control.
+        /// appStartLabel control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblProfileInfo;
+        protected global::System.Web.UI.WebControls.Label appStartLabel;
 
         /// <summary>
-        /// btnTotal control.
+        /// serviceLabel3 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnTotal;
+        protected global::System.Web.UI.WebControls.Label serviceLabel3;
 
         /// <summary>
-        /// lblTotal control.
+        /// cardCounter control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblTotal;
-
-        /// <summary>
-        /// txtTypeFilter control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtTypeFilter;
-
-        /// <summary>
-        /// btnCountByType control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnCountByType;
-
-        /// <summary>
-        /// lblCountByType control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblCountByType;
-
-        /// <summary>
-        /// btnAvgLevel control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnAvgLevel;
-
-        /// <summary>
-        /// lblAvgLevel control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblAvgLevel;
-
-        /// <summary>
-        /// btnRandomPokemon control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnRandomPokemon;
-
-        /// <summary>
-        /// lblRandomPokemon control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblRandomPokemon;
+        protected global::WebApplication1.CardCounter cardCounter;
     }
 }

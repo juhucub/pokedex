@@ -1,0 +1,1 @@
+﻿<%@ ServiceHost Language="C#" Debug="true" Service="WebApplication1.CardFilterService" Factory="System.ServiceModel.Activation.WebServiceHostFactory" %>

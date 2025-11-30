@@ -5,7 +5,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-namespace pokedex
+namespace WebApplication1
 {
     public partial class About : Page
     {

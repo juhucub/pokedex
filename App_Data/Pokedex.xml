@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Pokedex>
+	<Pokemon>
+		<Id>1</Id>
+		<Name>Bulbasaur</Name>
+		<Type>Grass/Poison</Type>
+		<Level>5</Level>
+		<Description>Seed Pokémon</Description>
+	</Pokemon>
+
+	<Pokemon>
+		<Id>2</Id>
+		<Name>Charizard</Name>
+		<Type>Fire/Flying</Type>
+		<Level>3</Level>
+		<Description>Seed Pokémon</Description>
+	</Pokemon>
+
+	<Pokemon>
+		<Id>3</Id>
+		<Name>Squirtle</Name>
+		<Type>Water</Type>
+		<Level>1</Level>
+		<Description>Seed Pokémon</Description>
+	</Pokemon>
+	
+</Pokedex>

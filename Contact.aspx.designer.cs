@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace pokedex
+namespace WebApplication1
 {
 
 

@@ -1,3 +1,0 @@
-<%@ ServiceHost Language="C#" Debug="true"
-    Service="pokedex.PokedexService"
-    CodeBehind="PokedexService.svc.cs" %>
