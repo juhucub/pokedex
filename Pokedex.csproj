@@ -115,6 +115,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="About.aspx" />
+    <Content Include="App_Data\Admin.xml" />
+    <Content Include="App_Data\Member.xml" />
     <Content Include="App_Data\Pokedex.xml" />
     <Content Include="Contact.aspx" />
     <Content Include="Content\bootstrap-grid.css" />
@@ -166,6 +168,7 @@
     <Content Include="Content\bootstrap-grid.min.css.map" />
     <Content Include="Content\bootstrap-grid.css.map" />
     <Content Include="CardFilterService.svc" />
+    <Content Include="PokedexService.svc" />
     <Content Include="WebUserControl1.ascx" />
     <None Include="Scripts\jquery-3.7.0.intellisense.js" />
     <Content Include="Scripts\jquery-3.7.0.js" />
@@ -228,8 +231,13 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="CardFilterService.cs" />
+    <Compile Include="IPokedexService.cs" />
     <Compile Include="Model\Pokemon.cs" />
+    <Compile Include="Model\PokemonStorage.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="PokedexService.svc.cs">
+      <DependentUpon>PokedexService.svc</DependentUpon>
+    </Compile>
     <Compile Include="Site.Master.cs">
       <DependentUpon>Site.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -259,7 +267,12 @@
       <DependentUpon>WebUserControl1.ascx</DependentUpon>
     </Compile>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\PokedexSecurity\PokedexSecurity.csproj">
+      <Project>{52c4a03d-b3dc-4c86-afd4-f02381fe45c1}</Project>
+      <Name>PokedexSecurity</Name>
+    </ProjectReference>
+  </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
     <Content Include="Scripts\jquery-3.7.0.slim.min.map" />
@@ -270,6 +283,9 @@
     <None Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Storage\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
