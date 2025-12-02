@@ -1,21 +1,24 @@
-﻿using System;
+﻿using PokemonSecurity;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Web.Security;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using PokemonSecurity;
 namespace pokedex
 {
     public partial class _Default : Page
     {
         private string PokemonXmlPath => Server.MapPath("~/App_Data/Pokemon.xml");
+        private string MemberXmlPath => Server.MapPath("~/App_Data/Members.xml");
         protected void Page_Load(object sender, EventArgs e)
         {
             if(!IsPostBack)
             {
                 LoadPokemonGrid();
                 LoadProfileFromCookie();
+                UpdateAuth();
             }
         }
 
@@ -25,7 +28,105 @@ namespace pokedex
             string hashed = HashSlinger.SlingHash(input);
             lblHashResult.Text = Server.HtmlEncode(hashed);
         }
+        protected void btnSignup_Click(object sender, EventArgs e)
+        {
+            var store = new UserStore(MemberXmlPath);
+            string username = txtSignupUsername.Text.Trim();
+            string password = txtSignupPassword.Text;
 
+            if (store.CreateUser(username, password, out string message))
+            {
+                FormsAuthentication.SetAuthCookie(username, false);
+                lblSignupStatus.Text = message;
+                lblLoginStatus.Text = string.Empty;
+            }
+            else
+            {
+                lblSignupStatus.Text = message;
+            }
+
+            UpdateAuth();
+        }
+
+        protected void btnLogin_Click(object sender, EventArgs e)
+        {
+            var store = new UserStore(MemberXmlPath);
+            string username = txtLoginUsername.Text.Trim();
+            string password = txtLoginPassword.Text;
+
+            if (store.ValidateUser(username, password, out var account, out string message))
+            {
+                FormsAuthentication.SetAuthCookie(account.Username, false);
+                lblLoginStatus.Text = message;
+                lblSignupStatus.Text = string.Empty;
+            }
+            else
+            {
+                lblLoginStatus.Text = message;
+            }
+
+            UpdateAuth();
+        }
+
+        protected void btnChangePassword_Click(object sender, EventArgs e)
+        {
+            var store = new UserStore(MemberXmlPath);
+            string username = GetAuthUsername();
+            if (username == null)
+            {
+                lblChangePasswordStatus.Text = "No user found.";
+                return;
+            }
+
+            string currentPassword = txtCurrentPassword.Text;
+            string newPassword = txtNewPassword.Text;
+
+            if (store.ChangePassword(username, currentPassword, newPassword, out string message))
+            {
+                lblChangePasswordStatus.Text = message;
+            }
+            else
+            {
+                lblChangePasswordStatus.Text = message;
+            }
+        }
+
+       
+
+        private string GetAuthUsername()
+        {
+            var cookie = Request.Cookies[FormsAuthentication.FormsCookieName];
+            if (cookie == null) return null;
+
+            try
+            {
+                var ticket = FormsAuthentication.Decrypt(cookie.Value);
+                if (ticket != null && !ticket.Expired)
+                {
+                    return ticket.Name;
+                }
+            }
+            catch
+            {
+                // ignore 
+            }
+
+            return null;
+        }
+
+        private void UpdateAuth()
+        {
+            var store = new UserStore(MemberXmlPath);
+            var username = GetAuthUsername();
+            if (username == null)
+            {
+                lblAuthStatus.Text = "Not signed in.";
+                return;
+            }
+
+            var account = store.GetUser(username);
+            lblAuthStatus.Text = $"Signed in as {username}";
+        }
         protected void btnAddPokemon_Click(object sender, EventArgs e)
         {
             if (string.IsNullOrWhiteSpace(txtName.Text))
@@ -143,5 +244,6 @@ namespace pokedex
                         "No Pokemon in Pokedex."
                         :$"Random Pokemon: {name}";
         }
+
     }
 }

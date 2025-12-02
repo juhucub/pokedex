@@ -9,6 +9,30 @@
                 and also demonstrates hashing, cookies, and session cookies state.
             </p>
 
+             <h2>User Accounts (Signup &amp; Login)</h2>
+            <asp:Label ID="lblAuthStatus" runat="server" />
+            <h3>Signup</h3>
+            Username: <asp:TextBox ID="txtSignupUsername" runat="server" />
+            Password: <asp:TextBox ID="txtSignupPassword" runat="server" TextMode="Password" />
+            <asp:Button ID="btnSignup" runat="server" Text="Create Account" OnClick="btnSignup_Click" />
+            <br />
+            <asp:Label ID="lblSignupStatus" runat="server" /><br />
+
+            <h3>Login</h3>
+            Username: <asp:TextBox ID="txtLoginUsername" runat="server" />
+            Password: <asp:TextBox ID="txtLoginPassword" runat="server" TextMode="Password" />
+            <asp:Button ID="btnLogin" runat="server" Text="Login" OnClick="btnLogin_Click" />
+            <br />
+            <asp:Label ID="lblLoginStatus" runat="server" />
+
+            <h3>Password Change</h3>
+            Current Password: <asp:TextBox ID="txtCurrentPassword" runat="server" TextMode="Password" />
+            New Password: <asp:TextBox ID="txtNewPassword" runat="server" TextMode="Password" />
+            <asp:Button ID="btnChangePassword" runat="server" Text="Change Password" OnClick="btnChangePassword_Click" />
+            <br />
+            <asp:Label ID="lblChangePasswordStatus" runat="server" /><br />
+
+
             <h2>TryIt: Hashing Function (DLL)</h2>
             <asp:TextBox ID="txtHashInput" runat="server" Width="300" />
             <asp:Button ID="btnHash" runat="server" Text="Hash String" OnClick="btnHash_Click" />
