@@ -38,12 +38,6 @@ namespace WebApplication1.Account
             lblHashResult.Text = Server.HtmlEncode(hashed);
         }
 
-        protected void visitCounterButton_Click(object sender, EventArgs e)
-        {
-            visitCounterLabel.Text = "Total visitors: " + Application["totalVisits"];
-            appStartLabel.Text = "Application started at: " + Application["startTime"];
-        }
-
         protected void btnRandomPokemon_Click(object sender, EventArgs e)
         {
             var client = new PokedexService();
@@ -156,6 +150,39 @@ namespace WebApplication1.Account
         {
             FormsAuthentication.SignOut();
             Server.Transfer("~/Default.aspx");
+        }
+
+        protected void resetPassBtn_Click(object sender, EventArgs e)
+        {
+            UserStore store = new UserStore(Server.MapPath("~/App_Data/Member.xml"));
+            string username = User.Identity.Name;
+            string currentPass = currentPassTxt.Text;
+            string newPass = newPassTxt.Text;
+            string confirmPass = confirmPassTxt.Text;
+
+            if (newPass != confirmPass)
+            {
+                passChangeErrLbl.Text = "New passwords do not match. Try again.";
+                passChangeErrLbl.Visible = true;
+                return;
+            }
+
+            UserAccount account;
+            string message;
+            if (!store.ValidateUser(username, currentPass, out account, out message)) 
+            {
+                passChangeErrLbl.Text = message;
+                return;
+            }
+            if (store.ChangePassword(username,currentPass, newPass, out message)) 
+            {
+                passChangeErrLbl.Text = message;
+            }
+            else
+            {
+                passChangeErrLbl.Text = message;
+            }
+         
         }
     }
 }

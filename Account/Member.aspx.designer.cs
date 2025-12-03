@@ -204,33 +204,6 @@ namespace WebApplication1.Account
         protected global::WebApplication1.CardCounter cardCounter;
 
         /// <summary>
-        /// VisitCounterButton control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button VisitCounterButton;
-
-        /// <summary>
-        /// visitCounterLabel control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label visitCounterLabel;
-
-        /// <summary>
-        /// appStartLabel control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label appStartLabel;
-
-        /// <summary>
         /// txtHashInput control.
         /// </summary>
         /// <remarks>
@@ -256,6 +229,51 @@ namespace WebApplication1.Account
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblHashResult;
+
+        /// <summary>
+        /// currentPassTxt control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox currentPassTxt;
+
+        /// <summary>
+        /// newPassTxt control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox newPassTxt;
+
+        /// <summary>
+        /// confirmPassTxt control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox confirmPassTxt;
+
+        /// <summary>
+        /// resetPassBtn control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button resetPassBtn;
+
+        /// <summary>
+        /// passChangeErrLbl control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label passChangeErrLbl;
 
         /// <summary>
         /// homeButton control.

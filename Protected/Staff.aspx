@@ -18,12 +18,12 @@
 
             Password: <br/>
             <asp:TextBox ID="passTxt" runat="server" Height="30px" Width="170px"></asp:TextBox> <br/>
-           <asp:Button ID="registerButton" runat="server" Text="Register!" OnClick="registerButton_Click" /> <br/>
+           <asp:Button ID="registerButton" runat="server" Text="Register!" OnClick="registerButton_Click" style="margin:15px;"/> <br/>
         </div>
         <div>
             <br />
-            <asp:Button ID="homeButton" runat="server" Text="Home" OnClick="homeButton_Click" /> <br />
-            <asp:Button ID="signOutButton" runat="server" Text="Sign Out" OnClick="signOutButton_Click" />
+            <asp:Button ID="homeButton" runat="server" Text="Home" OnClick="homeButton_Click" style="margin:15px;"/> <br />
+            <asp:Button ID="signOutButton" runat="server" Text="Sign Out" OnClick="signOutButton_Click" style="margin:15px;"/>
         </div>
     </form>
 </body>

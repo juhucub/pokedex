@@ -18,12 +18,12 @@
             Password: <br/>
             <asp:TextBox ID="passTxt" runat="server" Height="40px" Width="260px" TextMode="Password"></asp:TextBox> <br/>
             <asp:Label ID="passErrLbl" runat="server" Visible="false"></asp:Label> <br />
-            <asp:Button ID="loginButton" runat="server" Text="Login!" OnClick="loginButton_Click" /> 
-            <asp:CheckBox ID="keepSignedInBox" runat="server" Text="Keep me signed in" /> <br/>
+            <asp:Button ID="loginButton" runat="server" Text="Login!" OnClick="loginButton_Click" style="margin:15px;"/> 
+            <asp:CheckBox ID="keepSignedInBox" runat="server" Text="Keep me signed in" style="margin:15px;"/> <br/>
         </div>
         <div>
             New user? <a href="Register.aspx">Sign up here!</a> <br/>
-            <asp:Button ID="homeButton" runat="server" Text="Home" OnClick="homeButton_Click" />
+            <asp:Button ID="homeButton" runat="server" Text="Home" OnClick="homeButton_Click" style="margin:15px;"/>
         </div>
     </form>
 </body>

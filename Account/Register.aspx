@@ -26,8 +26,8 @@
             <asp:TextBox ID="verifyTxt" runat="server" Height="40px" Width="260px"></asp:TextBox> <br />
             <asp:Label ID="verifyErrLbl" runat="server" Visible="false"></asp:Label> <br/>
 
-            <asp:Button ID="registerButton" runat="server" Text="Register!" OnClick="registerButton_Click" /> <br />
-            <asp:Button ID="homeButton" runat="server" Text="Home" OnClick="homeButton_Click" />
+            <asp:Button ID="registerButton" runat="server" Text="Register!" OnClick="registerButton_Click" style="margin:15px;"/> <br />
+            <asp:Button ID="homeButton" runat="server" Text="Home" OnClick="homeButton_Click" style="margin:15px;"/>
         </div>
     </form>
 </body>
