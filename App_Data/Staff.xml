@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Users>
+  <User>
+    <Username>TA</Username>
+    <PasswordHash>0zFFYQkhseDljCkMbnHKeqlGWVs+D0ACJ+CSaoggxFSlKoysXj9ATNbsgw0s2xVasVOv/+FCqjKVB2wWFcH1PQ==</PasswordHash>
+  </User>
+  <User>
+    <Username>admin</Username>
+    <PasswordHash>7iaw3Ur350mqGo7jwQrpkj9hiYB3Lkc/iBml1JQODbJ6wYX4oOHV+E+IvIh/1nsUNzLDBMxfqa2Ob1f1ACio/w==</PasswordHash>
+  </User>
+</Users>

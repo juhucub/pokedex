@@ -3,21 +3,18 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.Serialization;
 using System.ServiceModel;
-using System.ServiceModel.Web;
 using System.ServiceModel.Activation;
-using WebApplication1.Model;
+using System.Text;
+using PokedexSecurity;
 
 namespace WebApplication1
 {
-    // NOTE: You can use the "Rename" command on the "Refactor" menu to change the interface name "IService1" in both code and config file together.
-    [ServiceContract]
+    // NOTE: You can use the "Rename" command on the "Refactor" menu to change the class name "CardFilterService" in code, svc and config file together.
+    // NOTE: In order to launch WCF Test Client for testing this service, please select CardFilterService.svc or CardFilterService.svc.cs at the Solution Explorer and start debugging.
     [AspNetCompatibilityRequirements(RequirementsMode = AspNetCompatibilityRequirementsMode.Allowed)]
     [ServiceBehavior(InstanceContextMode = InstanceContextMode.PerCall)]
-    public class CardFilterService
+    public class CardFilterService : ICardFilterService
     {
-        [OperationContract]
-        [WebGet(UriTemplate = "filter?level={level}&type={type}&name={name}", ResponseFormat = WebMessageFormat.Xml)]
-
         public List<Pokemon> Filter(string name, string type, string level)
         {
             // sanity checks

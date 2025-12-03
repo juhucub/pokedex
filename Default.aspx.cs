@@ -7,9 +7,9 @@ using System.Linq;
 using System.Net;
 using System.Text;
 using System.Web;
+using System.Web.Security;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using WebApplication1.Model;
 
 namespace WebApplication1
 {
@@ -17,189 +17,109 @@ namespace WebApplication1
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (!IsPostBack)
+          
+        }
+
+        private string GetRole()
+        {
+            return Session["role"] as string;
+        }
+
+        protected void memberRegisterButton_Click(object sender, EventArgs e)
+        {
+            string role = GetRole();
+            if (!User.Identity.IsAuthenticated || string.IsNullOrEmpty(role))
             {
-                LoadPokemonGrid();
-                LoadProfileFromCookie();
-            }
-        }
-        private void LoadProfileFromCookie()
-        {
-            string trainerName = null;
-
-            var cookie = Request.Cookies["TrainerProfile"];
-            if (cookie != null)
-            {
-                trainerName = cookie["TrainerName"];
-            }
-            if (!string.IsNullOrEmpty(trainerName))
-            {
-                txtTrainerName.Text = trainerName;
-                Session["TrainerName"] = trainerName;
-                UpdateProfileLabel(trainerName);
-            }
-        }
-
-        private void LoadPokemonGrid()
-        {
-            var storage = new PokemonStorage();
-            gvPokemon.DataSource = storage.LoadCards();
-            gvPokemon.DataBind();
-        }
-
-        private void UpdateProfileLabel(string trainerName)
-        {
-            string lastPokemon = Session["LastPokemonName"] as string;
-            lblProfileInfo.Text = $"Welcome, Trainer {trainerName}!" +
-                    (lastPokemon != null ?
-                    $"Last pokemon added this session: {lastPokemon}"
-                    : "You have not added any pokemon this session.");
-        }
-
-        protected void filterButton_Click(object sender, EventArgs e) // event of clicking on filter button
-        {
-            // take input from user
-            string name = nameInputTxt.Text.Trim(); 
-            string type = typeInputTxt.Text.Trim();
-            string level = lvlInputTxt.Text.Trim();
-
-            // create into URL for REST call
-            try
-            {
-                string baseURL = "https://localhost:44304/CardFilterService.svc/filter"; 
-                string url = baseURL + "?level=" + Server.UrlEncode(level) + "&type=" + Server.UrlEncode(type) + "&name=" + Server.UrlEncode(name);
-
-                // service call
-                WebClient client = new WebClient();
-                string xml = client.DownloadString(url);
-
-                // make XML file into dataset for easier sorting
-                DataSet cards = new DataSet();
-                StringReader reader = new StringReader(xml);
-                cards.ReadXml(reader);
-
-                // no cards check
-                if (cards.Tables.Count == 0 || cards.Tables[0].Rows.Count == 0)
-                {
-                    resultLabel.Text = "You have no cards matching your filter criteria.";
-                    return;
-                }
-
-                // clean format building
-                StringBuilder results = new StringBuilder();
-                DataTable table = cards.Tables[0];
-                foreach(DataRow r in table.Rows)
-                {
-                    results.Append("<b>Name:</b> " + r["Name"] + "<br/>");
-                    results.Append("<b>Type:</b> " + r["Type"] + "<br/>");
-                    results.Append("<b>Level:</b> " + r["Level"] + "<br/>");
-                    results.Append("<b>Description:</b> " + r["Description"] + "<br/>");
-                }
-                
-                resultLabel.Text = results.ToString();
-            }
-            catch (FormatException)
-            {
-                resultLabel.Text = "Please input ONLY integers for level search filter.";
-            }
-            catch (Exception ex)
-            {
-                resultLabel.Text = ex.Message;
-            }
-        }
-
-        protected void visitCounterButton_Click(object sender, EventArgs e)
-        {
-            // populate label w/ info
-            visitCounterLabel.Text = "Total visitors: " + Application["totalVisits"];
-            appStartLabel.Text = "Application started at: " + Application["startTime"];
-        }
-
-        protected void btnHash_Click(object sender, EventArgs e)
-        {
-            string input = txtHashInput.Text;
-            string hashed = HashSlinger.SlingHash(input);
-            lblHashResult.Text = Server.HtmlEncode(hashed);
-        }
-
-        protected void btnAddPokemon_Click(object sender, EventArgs e)
-        {
-            if (string.IsNullOrWhiteSpace(txtName.Text))
+                Response.Redirect("~/Account/Register.aspx");
                 return;
-
-            //If no level selected, start at 1
-            int level = 1;
-            int.TryParse(txtLevel.Text, out level);
-            var storage = new PokemonStorage();
-            var existingCards = storage.LoadCards();
-            int nextId = existingCards.Any() ? existingCards.Max(p => p.Id) + 1 : 1;
-
-            var newCard = new Pokemon
+            }
+            if (role == "member")
             {
-                Id = nextId,
-                Name = txtName.Text.Trim(),
-                Type = txtType.Text.Trim(),
-                Level = level,
-                Description = txtDesc.Text.Trim()
-            };
-            
-            storage.AddCard(newCard);
-
-            //Store last added pokemon in a session cookie
-            Session["LastPokemonName"] = newCard.Name;
-
-            LoadPokemonGrid();
-
-            // Now refresh the profile label too
-            var trainerName = Session["TrainerName"] as string ?? "Guest";
-            UpdateProfileLabel(trainerName);
+                Response.Redirect("~/Account/Member.aspx");
+            }
+            else
+            {
+                roleErrLbl.Text = "You are logged in as a Staff member and cannot access this!";
+                roleErrLbl.Visible = true;
+            }
         }
 
-        protected void btnSaveProfile_Click(object sender, EventArgs e)
+        protected void staffPageButton_Click(object sender, EventArgs e)
         {
-            string trainerName = txtTrainerName.Text.Trim();
-            if (string.IsNullOrEmpty(trainerName))
+            string role = GetRole();
+            if (!User.Identity.IsAuthenticated || string.IsNullOrEmpty(role))
+            {
+                Response.Redirect("~/Login.aspx");
                 return;
-
-            //Save in session cookie
-            Session["TrainerName"] = trainerName;
-
-            //Save cookie for 10 minutes
-            var cookie = new HttpCookie("TrainerProfile");
-            cookie["TrainerName"] = trainerName;
-            cookie.Expires = DateTime.Now.AddMinutes(10);
-            Response.Cookies.Add(cookie);
-
-            UpdateProfileLabel(trainerName);
-
-            //Lock Submit button for trainer names once you join
-            txtTrainerName.ReadOnly = true;
-            btnSaveProfile.Enabled = false;
-            lblProfileInfo.Text += "(trainer name locked for this session)";
+            }
+            if (role == "staff")
+            {
+                Response.Redirect("~/Protected/Staff.aspx");
+            }
+            else
+            {
+                roleErrLbl.Text = "You are logged in as a Member and cannot access this!";
+                roleErrLbl.Visible = true;
+            }
         }
 
-        protected void btnCountByType_Click(object sender, EventArgs e)
+        protected void memberLoginButton_Click(object sender, EventArgs e)
         {
-            var client = new PokedexService();
-            string type = txtTypeFilter.Text.Trim();
-            int count = client.GetPokemonCountByType(type);
-            lblCountByType.Text = $"Total Pokemon of type '{type}': {count}";
+            string role = GetRole();
+            if (!User.Identity.IsAuthenticated || string.IsNullOrEmpty(role))
+            {
+                Response.Redirect("~/Account/MemberLogin.aspx");
+                return;
+            }
+            if (role == "member")
+            {
+                roleErrLbl.Text = "You are already logged in as a member and cannot access this!";
+                roleErrLbl.Visible = true; ;
+            }
+            else
+            {
+                roleErrLbl.Text = "You are logged in as a Staff member and cannot access this!";
+                roleErrLbl.Visible = true;
+            }
         }
 
-        protected void btnAvgLevel_Click(object sender, EventArgs e)
+        protected void staffLoginButton_Click(object sender, EventArgs e)
         {
-            var client = new PokedexService();
-            double avgLevel = client.GetAveragePokemonLevel();
-            lblAvgLevel.Text = $"Average Pokemon Level: {avgLevel:F2}";
+            string role = GetRole();
+            if (!User.Identity.IsAuthenticated || string.IsNullOrEmpty(role))
+            {
+                Response.Redirect("~/Login.aspx");
+                return;
+            }
+            if (role == "staff")
+            {
+                roleErrLbl.Text = "You are already logged in as a Staff member and cannot access this!";
+                roleErrLbl.Visible = true;
+            }
+            else
+            {
+                roleErrLbl.Text = "You are logged in as a Member and cannot access this!";
+                roleErrLbl.Visible = true;
+            }
         }
 
-        protected void btnRandomPokemon_Click(object sender, EventArgs e)
+        protected void memberPageBtn_Click(object sender, EventArgs e)
         {
-            var client = new PokedexService();
-            string name = client.GetRandomPokemonName();
-            lblRandomPokemon.Text = string.IsNullOrEmpty(name) ?
-                        "No Pokemon in Pokedex."
-                        : $"Random Pokemon: {name}";
+            string role = GetRole();
+            if (!User.Identity.IsAuthenticated || string.IsNullOrEmpty(role))
+            {
+                Response.Redirect("~/Account/MemberLogin.aspx");
+                return;
+            }
+            if (role == "member")
+            {
+                Response.Redirect("~/Account/Member.aspx");
+            }
+            else
+            {
+                roleErrLbl.Text = "You are logged in as a Staff member and cannot access this!";
+                roleErrLbl.Visible = true;
+            }
         }
     }
 }

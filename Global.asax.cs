@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PokedexSecurity;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -8,26 +9,30 @@ using System.Web.Optimization;
 using System.Web.Routing;
 using System.Web.Security;
 using System.Web.SessionState;
+using System.Xml.Schema;
 
 
 namespace WebApplication1
 {
     public class Global : HttpApplication
     {
-        void Application_Start(object sender, EventArgs e)
+        void Application_Start(object sender, EventArgs e) // global event handler that will seed the TA login credentials should they be missing
         {
-            // Code that runs on application startup
-            // counter for number of site visits + date/time
-            Application["totalVisits"] = 0;
-            Application["startTime"] = DateTime.Now.ToString();
-           
+            string path = Server.MapPath("~/App_Data/Staff.xml");
+            var store = new UserStore(path);
+            string message;
+            UserAccount taAccount = store.GetUser("TA");
+            if (taAccount == null)
+            {
+                store.CreateUser("TA", "Cse445!", out message);
+            }
+
+            Application["totalLogins"] = 0;
         }
 
         void Session_Start(object sender, EventArgs e)
         {
-            Application.Lock();
-            Application["totalVisits"] = (int)Application["totalVisits"] + 1; // increment count per visit
-            Application.UnLock(); 
+            
         }
 
         

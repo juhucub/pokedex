@@ -1,9 +1,11 @@
-﻿<?xml version="1.0" encoding="utf-8" ?> 
-<Members>
-	<Member>
-		<Username>Ash_Ketchum</Username>
-		<HashedPassword> </HashedPassword>
-		<Email>ketchumall@asu.edu</Email>
-		<Role>Trainer</Role>
-	</Member>
-</Members>
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Users>
+  <User>
+    <Username>ashKetchum</Username>
+    <PasswordHash>sQnzu7wkTrgkQZF+0G1hi5AI3Qmzvv0bXgc5THBqi7mAsdd4Xll27ASbRt9fEyavWi6m0QP9B8lThf+rDKy8hg==</PasswordHash>
+  </User>
+  <User>
+    <Username>test</Username>
+    <PasswordHash>m3HSJL1i83hdltRq0+o9czGb+8KJDKra4t/3JRlnPKcjI8PZm6XBHXx6zG4UuMXaDEZjR1wuXDre9G9zvN7AQw==</PasswordHash>
+  </User>
+</Users>

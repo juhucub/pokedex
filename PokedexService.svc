@@ -1,1 +1,1 @@
-﻿<%@ ServiceHost Language="C#" Debug="true" Service="WebApplication1.Service1" CodeBehind="PokedexService.svc.cs" %>
+﻿<%@ ServiceHost Language="C#" Debug="true" Service="WebApplication1.PokedexService" CodeBehind="PokedexService.svc.cs" Factory="System.ServiceModel.Activation.WebServiceHostFactory" %>

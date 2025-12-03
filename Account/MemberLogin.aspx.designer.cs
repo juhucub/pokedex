@@ -7,65 +7,83 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace WebApplication1
+namespace WebApplication1.Account
 {
 
 
-    public partial class _Default
+    public partial class MemberLogin
     {
 
         /// <summary>
-        /// memberRegisterButton control.
+        /// form1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button memberRegisterButton;
+        protected global::System.Web.UI.HtmlControls.HtmlForm form1;
 
         /// <summary>
-        /// staffPageButton control.
+        /// userTxt control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button staffPageButton;
+        protected global::System.Web.UI.WebControls.TextBox userTxt;
 
         /// <summary>
-        /// memberLoginButton control.
+        /// userErrLbl control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button memberLoginButton;
+        protected global::System.Web.UI.WebControls.Label userErrLbl;
 
         /// <summary>
-        /// staffLoginButton control.
+        /// passTxt control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button staffLoginButton;
+        protected global::System.Web.UI.WebControls.TextBox passTxt;
 
         /// <summary>
-        /// memberPageBtn control.
+        /// passErrLbl control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button memberPageBtn;
+        protected global::System.Web.UI.WebControls.Label passErrLbl;
 
         /// <summary>
-        /// roleErrLbl control.
+        /// loginButton control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label roleErrLbl;
+        protected global::System.Web.UI.WebControls.Button loginButton;
+
+        /// <summary>
+        /// keepSignedInBox control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CheckBox keepSignedInBox;
+
+        /// <summary>
+        /// homeButton control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button homeButton;
     }
 }
