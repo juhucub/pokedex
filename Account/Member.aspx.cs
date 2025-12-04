@@ -81,9 +81,7 @@ namespace WebApplication1.Account
             // create into URL for REST call
             try
             {
-                string path = ResolveUrl("~/CardFilterService.svc/filter");
-                string baseUrl = Request.Url.GetLeftPart(UriPartial.Authority) + path;
-                string url = baseUrl + "?name=" + Server.UrlEncode(name) + "&type=" + Server.UrlEncode(type) + "&level=" + Server.UrlEncode(level);
+                string url = "http://webstrar22.fulton.asu.edu/page0/CardFilterService.svc/filter" + "?name=" + Server.UrlEncode(name) + "&type=" + Server.UrlEncode(type) + "&level=" + Server.UrlEncode(level);
 
                 // service call
                 WebClient client = new WebClient();

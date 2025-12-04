@@ -22,7 +22,7 @@
             <asp:CheckBox ID="keepSignedInBox" runat="server" Text="Keep me signed in" style="margin:15px;"/> <br/>
         </div>
         <div>
-            New user? <a href="Register.aspx">Sign up here!</a> <br/>
+            New user? <a href="/page0/Register.aspx">Sign up here!</a> <br/>
             <asp:Button ID="homeButton" runat="server" Text="Home" OnClick="homeButton_Click" style="margin:15px;"/>
         </div>
     </form>
