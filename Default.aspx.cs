@@ -35,7 +35,8 @@ namespace WebApplication1
             }
             if (role == "member")
             {
-                Response.Redirect("~/Account/Member.aspx");
+                roleErrLbl.Text = "You are logged in as a member already and cannot access this!";
+                roleErrLbl.Visible = true;
             }
             else
             {

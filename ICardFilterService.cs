@@ -14,7 +14,7 @@ namespace WebApplication1
     public interface ICardFilterService
     {
         [OperationContract]
-        [WebGet(UriTemplate = "filter?level={level}&type={type}&name={name}", ResponseFormat = WebMessageFormat.Xml)]
-        List<Pokemon> Filter(string level, string type, string name);
+        [WebGet(UriTemplate = "filter?name={name}&type={type}&level={level}", ResponseFormat = WebMessageFormat.Xml)]
+        List<Pokemon> Filter(string name, string type, string level);
     }
 }

@@ -68,11 +68,22 @@ namespace WebApplication1.Account
             string type = typeInputTxt.Text.Trim();
             string level = lvlInputTxt.Text.Trim();
 
+            if (!string.IsNullOrEmpty(level))
+            {
+                int i;
+                if (!int.TryParse(level, out i))
+                {
+                    resultLabel.Text = "Please input ONLY integers for level search filter.";
+                    return;
+                }
+            }
+
             // create into URL for REST call
             try
             {
-                string baseURL = "https://localhost:44304/CardFilterService.svc/filter";
-                string url = baseURL + "?level=" + Server.UrlEncode(level) + "&type=" + Server.UrlEncode(type) + "&name=" + Server.UrlEncode(name);
+                string path = ResolveUrl("~/CardFilterService.svc/filter");
+                string baseUrl = Request.Url.GetLeftPart(UriPartial.Authority) + path;
+                string url = baseUrl + "?name=" + Server.UrlEncode(name) + "&type=" + Server.UrlEncode(type) + "&level=" + Server.UrlEncode(level);
 
                 // service call
                 WebClient client = new WebClient();
@@ -81,7 +92,14 @@ namespace WebApplication1.Account
                 // make XML file into dataset for easier sorting
                 DataSet cards = new DataSet();
                 StringReader reader = new StringReader(xml);
-                cards.ReadXml(reader);
+                try
+                {
+                    cards.ReadXml(reader);
+                }
+                finally
+                {
+                    reader.Dispose();
+                }
 
                 // no cards check
                 if (cards.Tables.Count == 0 || cards.Tables[0].Rows.Count == 0)
@@ -102,10 +120,6 @@ namespace WebApplication1.Account
                 }
 
                 resultLabel.Text = results.ToString();
-            }
-            catch (FormatException)
-            {
-                resultLabel.Text = "Please input ONLY integers for level search filter.";
             }
             catch (Exception ex)
             {
